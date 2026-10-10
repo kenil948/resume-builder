@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1eee7;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c7c1b3;
+  border-radius: 20px;
+  border: 2px solid #f1eee7;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a89f8e;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #efece5 inset !important;
+  -webkit-text-fill-color: #3F3F46 !important;
+  caret-color: #3F3F46 !important;
+  border: 1px solid #d1d5db !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+#editor-toolbar::-webkit-scrollbar{
+  display: none;
+}
+
+@media print{
+  body{
+    margin: 0;
+    padding: 0;
+    background: white
+  }
+
+  *{
+    box-shadow: none !important;
+  }
+}
+
+.ql-container.ql-snow {
+  display: none !important;
+}
+.ql-toolbar.ql-snow {
+  border-bottom: 1px solid #ccc !important;
+}
