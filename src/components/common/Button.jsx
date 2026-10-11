@@ -15,7 +15,7 @@ const Button = ({ selectedTemplate }) => {
   };
 
   return (
-    <div className="flex justify-end mr-14 mt-5">
+    <div className="flex justify-center sm:justify-end px-4 sm:px-8 md:px-14 mt-5 pb-6">
       <button
         onClick={handleClick}
         className="px-7 py-3 rounded-xl text-[#f6f4ef] bg-[#1a2744] font-bold tracking-wide text-sm flex items-center gap-2 cursor-pointer active:scale-95 transition-all duration-300"

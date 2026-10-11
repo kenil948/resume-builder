@@ -6,17 +6,17 @@ const TemplateCard = ({ data, selectedTemplate, setSelectedTemplate }) => {
   return (
     <div
       onClick={() => setSelectedTemplate(data.slug)}
-      className={`w-60 h-full cursor-pointer transition-all duration-300 ${
+      className={`w-full max-w-[260px] cursor-pointer transition-all duration-300 ${
         isActive ? "-translate-y-2" : "hover:-translate-y-1"
       }`}
     >
       <div
-        style={{ borderColor: isActive ? data.accentColor : "transparent" }}
-        className={
-          "w-full h-[40vh] rounded-3xl overflow-hidden border-3 transition-all duration-300"
-        }
+        className={`w-full h-64 sm:h-72 lg:h-80 xl:h-[40vh] rounded-3xl overflow-hidden transition-all duration-300 shadow-sm hover:shadow-md border-3 border-transparent ${
+          isActive ? "border-3" : ""
+        }`}
+        style={isActive ? { borderColor: data.accentColor } : undefined}
       >
-        <img className="w-full h-full" src={data.preview} alt={data.name} />
+        <img className="w-full h-full object-cover object-top" src={data.preview} alt={data.name} />
       </div>
 
       <div className="flex items-center justify-between gap-3 mt-3">

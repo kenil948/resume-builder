@@ -25,7 +25,7 @@ const ExperienceCard = ({ form, index, remove, totalCards }) => {
         )}
       </div>
       <div className="flex flex-col gap-2">
-        <div className="flex gap-5">
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-5">
           <div className="flex-1">
             <FormInput
               label="Job Title"
@@ -45,7 +45,7 @@ const ExperienceCard = ({ form, index, remove, totalCards }) => {
             />
           </div>
         </div>
-        <div className="flex gap-5">
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-5">
           <div className="flex-1">
             <FormInput
               label="Start Year"

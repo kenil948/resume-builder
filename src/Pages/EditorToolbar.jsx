@@ -88,7 +88,7 @@ const EditorToolbar = () => {
   return (
     <div
       id="editor-toolbar"
-      className="fixed w-[51%] overflow-x-auto top-21 z-50 flex items-center gap-2 bg-white shadow-xl border border-zinc-200 rounded-xl px-4 py-7"
+      className="sticky top-2 z-40 w-full max-w-full overflow-x-auto flex items-center gap-2 bg-white shadow-lg border border-zinc-200 rounded-xl px-3 py-3 sm:px-4 sm:py-4 no-scrollbar"
     >
       <div className="group relative">
         <select

@@ -10,8 +10,8 @@ const Personal = ({ form }) => {
 
   return (
     <div className="w-full h-full overflow-y-auto">
-      <form className="flex flex-col gap-6 px-6 pt-7 pb-6" noValidate>
-        <div className="flex gap-5">
+      <form className="flex flex-col gap-6 px-3 sm:px-6 pt-5 sm:pt-7 pb-6" noValidate>
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-5">
           <div className="flex flex-col gap-2 flex-1">
             <FormInput
               label="Full Name"

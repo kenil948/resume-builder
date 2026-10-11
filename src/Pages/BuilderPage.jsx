@@ -48,6 +48,7 @@ const BuilderPage = () => {
 
   const { watch } = form;
   const [activeTab, setActiveTab] = useState("personal");
+  const [mobileTab, setMobileTab] = useState("editor");
   const [isTemplateModalOpen, setIsTemplateModalOpen] = useState(false);
 
   useEffect(() => {
@@ -81,7 +82,7 @@ const BuilderPage = () => {
   };
 
   return (
-    <div className="w-full h-screen">
+    <div className="w-full min-h-screen lg:h-screen flex flex-col bg-[#f6f4ef]">
       <BuilderNavbar
         onNewResume={handleNewResume}
         onDownload={handlePrint}
@@ -89,13 +90,41 @@ const BuilderPage = () => {
         onSwitchTemplate={() => setIsTemplateModalOpen(true)}
       />
       <hr className="text-[#eeeff1] w-full" />
-      <div className="flex">
+      <div className="lg:hidden flex border-b border-[#e9e7e4] bg-[#efece5] p-1 gap-1">
+        <button
+          onClick={() => setMobileTab("editor")}
+          className={`flex-1 py-2 text-xs font-semibold rounded-md transition-all ${
+            mobileTab === "editor"
+              ? "bg-[#1a2744] text-white shadow-sm"
+              : "text-[#5a5965] hover:text-[#1a1a2e]"
+          }`}
+        >
+          Form Editor
+        </button>
+        <button
+          onClick={() => setMobileTab("preview")}
+          className={`flex-1 py-2 text-xs font-semibold rounded-md transition-all ${
+            mobileTab === "preview"
+              ? "bg-[#1a2744] text-white shadow-sm"
+              : "text-[#5a5965] hover:text-[#1a1a2e]"
+          }`}
+        >
+          Resume Preview
+        </button>
+      </div>
+      <div className="flex flex-col lg:flex-row flex-1 overflow-hidden">
         <LeftPanel
+          className={mobileTab === "editor" ? "block" : "hidden lg:block"}
           form={form}
           activeTab={activeTab}
           setActiveTab={setActiveTab}
         />
-        <RightPanel ref={resumeRef} form={form} template={template} />
+        <RightPanel
+          className={mobileTab === "preview" ? "block" : "hidden lg:block"}
+          ref={resumeRef}
+          form={form}
+          template={template}
+        />
       </div>
       <TemplateModal
         isOpen={isTemplateModalOpen}

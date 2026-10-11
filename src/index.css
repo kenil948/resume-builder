@@ -55,3 +55,36 @@ select:-webkit-autofill {
 .ql-toolbar.ql-snow {
   border-bottom: 1px solid #ccc !important;
 }
+
+/* Responsive Toastify Custom Overrides */
+.Toastify__toast-container--top-center {
+  width: 90% !important;
+  max-width: 360px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  padding: 0 !important;
+  top: 10px !important;
+}
+
+.Toastify__toast {
+  min-height: 40px !important;
+  padding: 8px 12px !important;
+  border-radius: 10px !important;
+  font-size: 13px !important;
+  line-height: 1.35 !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12) !important;
+  border: 1px solid #e3e5e8 !important;
+  margin-bottom: 8px !important;
+}
+
+.Toastify__toast-body {
+  padding: 0 !important;
+  margin: 0 !important;
+  font-size: 13px !important;
+  color: #1a1a2e !important;
+}
+
+.Toastify__close-button {
+  align-self: center !important;
+  opacity: 0.7 !important;
+}

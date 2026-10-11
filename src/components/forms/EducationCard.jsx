@@ -42,7 +42,7 @@ const EducationCard = ({ form, index, remove, totalCards }) => {
           errors={errors.education?.[index]?.institution}
         />
 
-        <div className="flex gap-5">
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-5">
           <div className="flex-1">
             <FormInput
               label="Graduation Year"
