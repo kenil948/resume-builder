@@ -9,6 +9,7 @@ import { ResumeSchema } from "../validation/ResumeSchema";
 import TemplateModal from "../components/builder/TemplateModal";
 import { useReactToPrint } from "react-to-print";
 import { Navigate, useNavigate } from "react-router-dom";
+import { useResumeEditor } from "../hooks/useResumeEditor";
 
 const BuilderPage = () => {
   const navigate = useNavigate();
@@ -62,6 +63,20 @@ const BuilderPage = () => {
   const [selectedTemplate, setSelectedTemplate] = useState(
     localStorage.getItem("selectedTemplate"),
   );
+
+  const { setSavedStyle } = useResumeEditor();
+
+  useEffect(() => {
+    if (!localStorage.getItem("resumeData")) {
+      setSavedStyle({});
+      return;
+    }
+    const allStyles = JSON.parse(localStorage.getItem("resumeStyle") || "{}");
+    const isScoped = Object.keys(allStyles).some((k) =>
+      ["classic", "modern", "creative", "minimal", "executive"].includes(k),
+    );
+    setSavedStyle(isScoped ? allStyles[selectedTemplate] || {} : allStyles);
+  }, [selectedTemplate, setSavedStyle]);
 
   const template = templates.find((item) => item.slug === selectedTemplate);
 

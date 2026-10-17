@@ -6,9 +6,20 @@ export const ResumeEditorProvider = ({ children }) => {
 
     const [isEditMode, setIsEditMode] = useState(false)
     const [selectedField, setSelectedField] = useState(null)
-    const [savedStyle, setSavedStyle] = useState(()=>{
+    const [savedStyle, setSavedStyle] = useState(() => {
+        if (!localStorage.getItem("resumeData")) return {}
+        const template = localStorage.getItem("selectedTemplate")
         const style = localStorage.getItem("resumeStyle")
-        return style ? JSON.parse(style) : {}
+        if (!style) return {}
+        try {
+            const parsed = JSON.parse(style)
+            const isScoped = Object.keys(parsed).some((k) =>
+                ["classic", "modern", "creative", "minimal", "executive"].includes(k)
+            )
+            return isScoped ? (parsed[template] || {}) : parsed
+        } catch {
+            return {}
+        }
     })
     const [editingStyle, setEditingStyle] = useState({})
 

@@ -44,7 +44,17 @@ const BuilderNavbar = ({
 
   const handleDoneClick = () => {
     setSavedStyle(structuredClone(editingStyle));
-    localStorage.setItem("resumeStyle", JSON.stringify(editingStyle));
+    const hasResumeData = Boolean(localStorage.getItem("resumeData"));
+    const raw = JSON.parse(localStorage.getItem("resumeStyle") || "{}");
+    const isScoped = Object.keys(raw).some((k) =>
+      ["classic", "modern", "creative", "minimal", "executive"].includes(k),
+    );
+    const allStyles = hasResumeData && isScoped ? raw : {};
+    allStyles[template.slug] = editingStyle;
+    localStorage.setItem("resumeStyle", JSON.stringify(allStyles));
+    if (!hasResumeData) {
+      localStorage.setItem("resumeData", JSON.stringify({}));
+    }
     setSelectedField(null);
     setIsEditMode(false);
     toast.success("Template changes saved successfully!");
